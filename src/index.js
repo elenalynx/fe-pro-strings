@@ -84,8 +84,16 @@ export const quantityOfSymbols = (string, symbol) => {
  */
 export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
   let countSymbol = 0;
-  while (string.indexOf(symbol) !== -1) {
-
+  let positionSymbol = 0;
+  let nextPositionSymbol = 0;
+  while (true) {
+    nextPositionSymbol = string.toLowerCase().indexOf(symbol.toLowerCase(), positionSymbol);
+    if (nextPositionSymbol === -1) {
+      break;
+    } else {
+      countSymbol += 1;
+      positionSymbol = nextPositionSymbol + 1;
+    }
   }
 
   return countSymbol;
